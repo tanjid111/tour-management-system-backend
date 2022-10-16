@@ -10,6 +10,9 @@ router.route('/')
 router.route('/cheapest')
     .get(tourController.cheapestTours)
 
+router.route('/trending')
+    .get(tourController.trendingTours)
+
 router.route('/:id')
     .patch(tourController.updateTour)
     .get(viewCount, tourController.getTour)

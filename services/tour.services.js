@@ -23,6 +23,11 @@ exports.getCheapestTours = async () => {
     return tours;
 }
 
+exports.getTrendingTours = async () => {
+    const tours = Tour.find({}).sort({ viewCount: -1 }).limit(3);;
+    return tours;
+}
+
 exports.createTourService = async (data) => {
     const tour = await Tour.create(data);
     return tour;

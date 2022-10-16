@@ -1,4 +1,4 @@
-const { getTourService, createTourService, getATourService, updateTourService, getCheapestTours } = require("../services/tour.services")
+const { getTourService, createTourService, getATourService, updateTourService, getCheapestTours, getTrendingTours } = require("../services/tour.services")
 
 exports.getTours = async (req, res, next) => {
     try {
@@ -63,6 +63,22 @@ exports.getTour = async (req, res, next) => {
 exports.cheapestTours = async (req, res, next) => {
     try {
         const tours = await getCheapestTours()
+        res.status(200).json({
+            status: 'success',
+            data: tours
+        })
+    } catch (error) {
+        res.status(400).json({
+            status: 'fail',
+            message: 'Cannot get the data',
+            error: error.message
+        })
+    }
+}
+
+exports.trendingTours = async (req, res, next) => {
+    try {
+        const tours = await getTrendingTours()
         res.status(200).json({
             status: 'success',
             data: tours

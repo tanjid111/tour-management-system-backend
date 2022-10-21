@@ -4,7 +4,7 @@ exports.getTours = async (req, res, next) => {
     try {
         let filters = { ...req.query };
 
-        const excludeFields = ['sort', 'page', 'limit'];
+        const excludeFields = ['sort', 'page', 'limit', 'fields'];
         excludeFields.forEach(field => delete filters[field]);
 
         let filtersString = JSON.stringify(filters);
